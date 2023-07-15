@@ -8,12 +8,29 @@ a {
 }
 
 .product-home {
-  background-image: url('https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 40vmin;
-  height: 20vmin;
   text-align: center;
+  font-size: 3vmin;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   margin: 1vmin;
-  font-size: 5vmin;
+}
+
+.product-home:hover {
+  background-color: gray;
+}
+
+.product-home img {
+  width: 100%;
+  height: auto;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 20px;
 }
