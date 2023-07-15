@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+
+<%= product.name %> <br>
+£<%= product.price %> <br>
+<%= product.quality %> <br>
+<%= product.category %> <br>
+<%= product.quantity %> <br>
+<%- product.reviews.map(function(review) {
+    return `<div>${review.rating} - ${review.review}</div>`;
+}).join('') %>
+<a href="<%- product.id %>-new-review">New Review</a>
+
+
+<%- include('../partials/footer') %>

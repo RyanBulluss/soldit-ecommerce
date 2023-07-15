@@ -1,5 +1,18 @@
 <%- include('./partials/header') %>
 
-Display products here
+<div class="container">
+    <div class="row">
+        <%- products.map(function(product) {
+            return `
+            <div class="product-home">
+                <a href="/products/${product.id}">${product.name}</a> -
+                £${product.price}
+            </div>
+            `
+        }).join('') %>
+    </div>
+</div>
+
+
 
 <%- include('./partials/footer') %>

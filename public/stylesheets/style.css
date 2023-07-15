@@ -7,3 +7,13 @@ a {
   color: #00B7FF;
 }
 
+.product-home {
+  background-image: url('https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40vmin;
+  height: 20vmin;
+  text-align: center;
+  margin: 1vmin;
+  font-size: 5vmin;
+}

@@ -4,11 +4,11 @@
     <form action="/" method="POST">
       <div class="form-group">
         <label for="name">Name:</label>
-        <input class="form-control" type="text" required>
+        <input class="form-control" name="name" type="text" required>
       </div>
       <div class="form-group">
         <label for="price">Price (£):</label>
-        <input class="form-control" type="number" required>
+        <input class="form-control" name="price" type="number" required>
       </div>
       <div class="form-group">
         <label for="quality">Quality</label>
@@ -33,16 +33,8 @@
         </select>
       </div>
       <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="image" required>
-      </div>
-      <div class="form-group">
-        <label for="location">Location:</label>
-        <input class="form-control" type="location" required>
-      </div>
-      <div class="form-group">
         <label for="quantity">Quantity:</label>
-        <input class="form-control" min="0" type="number" required>
+        <input class="form-control" name="quantity" min="1" type="number" required>
       </div>
       <button type="submit" class="btn mt-3 btn-primary">Add Product</button>
     </form>

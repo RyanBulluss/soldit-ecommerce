@@ -1,10 +1,17 @@
+const Product = require('../models/product');
 
 
 
 
-
-function home (req, res) {
-    res.render('index', { title: 'Home' });
+async function home (req, res) {
+    title = 'home';
+    try {
+        const products = await Product.find({});
+        res.render('index', { products });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    }
 };
 
 function basket (req, res) {
