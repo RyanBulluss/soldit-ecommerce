@@ -14,7 +14,7 @@ async function home (req, res) {
     }
 };
 
-function basket (req, res) {
+function basket (req, res, location) {
     res.render('basket', { title: 'Basket' });
 };
 

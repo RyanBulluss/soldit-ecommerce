@@ -1,9 +1,13 @@
+const { MongoDriverError } = require('mongodb');
 const Product = require('../models/product');
 
 
 
 async function create(req, res) {
     try {
+        req.body.user = req.user._id;
+        req.body.userName = req.user.name;
+        req.body.userAvatar = req.user.avatar;
         await Product.create(req.body);
         res.redirect('/');
     } catch (err) {
@@ -36,6 +40,11 @@ async function newReview(req, res) {
 
 async function createReview(req, res) {
     const product = await Product.findById(req.params.id);
+
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
+
     product.reviews.push(req.body);
     try {
         await product.save();
@@ -45,9 +54,31 @@ async function createReview(req, res) {
     res.redirect(`/products/${product.id}`);
 }
 
+function deleteReview(req, res, next) {
+    Product.findOne({
+        'reviews._id': req.params.id,
+        'reviews.user': req.user._id
+    }).then(function(product) {
+        if(!product) return res.redirect('/');
+        product.reviews.remove(req.params.id);
+        product.save().then(function() {
+            res.redirect(`/products/${product.id}`);
+        }).catch(function(err) {
+            return next(err);
+        });
+    });
+};
+
+async function deleteProduct(req, res, next) {
+    await Product.deleteOne({ _id: req.params.id });
+    res.redirect('/');
+}
+
 module.exports = {
     create,
     show,
     newReview,
-    createReview
+    createReview,
+    deleteReview,
+    deleteProduct
 }

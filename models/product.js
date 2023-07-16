@@ -7,7 +7,13 @@ const reviewSchema = new Schema({
         type: Number,
         enum: [0, 1, 2, 3, 4, 5]
     },
-    review: String
+    review: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    userName: String,
+    userAvatar: String
 });
 
 const productSchema = new Schema({
@@ -22,7 +28,13 @@ const productSchema = new Schema({
         enum: ['Electronics', 'Fashion', 'Sports', 'Books', 'Home', 'Garden']
     },
     quantity: Number,
-    reviews: [reviewSchema]
+    reviews: [reviewSchema],
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    userName: String,
+    userAvatar: String
 });
 
 

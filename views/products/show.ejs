@@ -1,15 +1,53 @@
 <%- include('../partials/header') %>
 
-<image class="img-fluid rounded-circle custom-image" url="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
+<image class="show-image" src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image><br>
 <%= product.name %> <br>
+<% const sumOfRatings = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length %>
+
+Rating: <%= sumOfRatings %> <br>
 £<%= product.price %> <br>
-<%= product.quality %> <br>
-<%= product.category %> <br>
-<%= product.quantity %> <br>
-<%- product.reviews.map(function(review) {
-    return `<div>${review.rating} - ${review.review}</div>`;
-}).join('') %>
-<a href="<%- product.id %>-new-review">New Review</a>
+Quality: <%= product.quality %> <br>
+Category: <%= product.category %> <br>
+Stock: <%= product.quantity %> <br> <br>
+Seller: <%= product.userName %> <br>
+<form action="<%= product._id %>/delete?_method=DELETE" method="POST">
+    <button type="submit">x</button>
+</form>
+<% if(product.reviews.length) { %>
+<h4>Reviews:</h4>
+<table>
+    <!-- <thead>
+        <th>User Image</th>
+        <th>User Name</th>
+        <th>Rating</th>
+        <th>Review</th>
+        <th>Time</th>
+    </thead> -->
+    <tbody>
+        <% product.reviews.forEach(function(review) { %>
+            <tr> 
+                <td><image src="<%= review.userAvatar %>" referrerpolicy="no-referrer"></image></td>
+                <td><%= review.userName %></td>
+                <td><%= review.rating %></td>
+                <td><%= review.review %></td>
+                <td>00/00/00</td>
+                <td>
+                    <% if(user?._id.equals(review.user)) { %>
+                        <form action="<%= review._id %>?_method=DELETE" method="POST">
+                            <button type="submit">X</button>
+                        </form>
+                    <% } %>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+<% } else { %>
+    <h5>No Reviews Yet</h5>
+<% } %>
+<% if (user) { %>
+    <a href="<%- product.id %>-new-review">New Review</a>
+<% } %>
 
 
 <%- include('../partials/footer') %>

@@ -3,6 +3,8 @@ const router = express.Router();
 const navCtrl = require('../controllers/navigation');
 const productCtrl = require('../controllers/products');
 const passport = require('passport');
+const ensureLoggedIn = require('../config/ensureLoggedIn');
+
 
 // Open home page
 router.get('/', navCtrl.home);
@@ -20,7 +22,7 @@ router.get('/auth/google', passport.authenticate(
     'google',
     {
         scope: ['profile', 'email'],
-        prompt: 'selected_account'
+        prompt: 'select_account'
     }
 ));
 

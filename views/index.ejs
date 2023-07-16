@@ -5,8 +5,11 @@
         <%- products.map(function(product) {
             return `
             <div class="col-md-6 col-lg-4">
-                <div class="product-home">
-                    <a href="/products/${product.id}"><image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740">${product.name} - £${product.price}</image></a>
+                <div class="product-home card-body">
+                    <a href="/products/${product.id}"><image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-text">£${product.price}</p>
+                    </image></a>
                 </div>
             </div>
             `
