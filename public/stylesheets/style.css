@@ -1,6 +1,22 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
+header {
+  background-image: url('https://www.syte.ai/wp-content/webp-express/webp-images/uploads/2021/08/eCommerce-Personalization-blog-1-2048x1251.jpg.webp');
+}
+
+footer {
+  width: 100%;
+  margin-top: auto;
 }
 
 a {
@@ -32,13 +48,18 @@ nav img {
   color: white;
 }
 
-nav {
-  font-size: 2vmin;
+.navbar {
+  box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.1);
 }
 
-nav li {
-  margin: 0 1vmin 0 1vmin;
+.nav-item {
+  border-bottom: 0.5px solid rgba(30, 30, 30, 0.1);
 }
+
+.container {
+  max-width: 1200px;
+}
+
 
 .login {
   display: flex;
@@ -54,6 +75,14 @@ nav li {
 .show-image {
   width: 40vmin;
   height: auto;
+}
+
+.nav-left {
+  display: flex;
+}
+
+.nav-link.dropdown-toggle::after {
+    display: none;
 }
 
 .basket-item {
