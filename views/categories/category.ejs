@@ -1,16 +1,22 @@
-<%- include('./partials/header') %>
+<%- include('../partials/header') %>
 
 
+
+
+  
 <div class="container">
     <div class="row">
-        <%- products.map(function(product) {
+
+
+        <%= console.log(products) %>
+        <%- products.map(function(p) {
             return `
             <div class="col-md-6 col-lg-4">
-                <a href="/products/${product.id}">
+                <a href="/products/${p.id}">
                     <div class="product-home card-body">
                         <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="card-text">£${product.price}</p>
+                        <h5 class="card-title">${p.name}</h5>
+                        <p class="card-text">£${p.price}</p>
                     </div>
                 </a>
             </div>
@@ -18,7 +24,11 @@
         }).join('') %>
     </div>
 </div>
+  
+  
+  
+  
 
 
 
-<%- include('./partials/footer') %>
+<%- include('../partials/footer') %>

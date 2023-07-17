@@ -1,5 +1,6 @@
 const { MongoDriverError } = require('mongodb');
 const Product = require('../models/product');
+const User = require('../models/user');
 
 
 
@@ -74,11 +75,26 @@ async function deleteProduct(req, res, next) {
     res.redirect('/');
 }
 
+async function addToBasket(req, res) {
+    const product = await Product.findById(req.params.id);
+    const user = await User.findById(req.user._id);
+    req.body.product = product;
+    user.basket.push(req.body);
+
+    try {
+        await user.save();
+    } catch (err) {
+        console.log(err);
+    }
+    res.redirect(`/`);
+}
+
 module.exports = {
     create,
     show,
     newReview,
     createReview,
     deleteReview,
-    deleteProduct
+    deleteProduct,
+    addToBasket
 }

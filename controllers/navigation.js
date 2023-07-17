@@ -4,7 +4,7 @@ const Product = require('../models/product');
 
 
 async function home (req, res) {
-    title = 'home';
+    title = 'Home';
     try {
         const products = await Product.find({});
         res.render('index', { products });
@@ -14,8 +14,20 @@ async function home (req, res) {
     }
 };
 
+async function categories (req, res) {
+    title = req.params.category;
+    try {
+        const products = await Product.find({category: req.params.category});
+        res.render('categories/category', { products });
+    } catch (err) {
+        console.log(err);
+        res.redirect('/');
+    }
+};
+
 function basket (req, res, location) {
-    res.render('basket', { title: 'Basket' });
+    title = 'Basket';
+    res.render('basket', { Product });
 };
 
 function sell (req, res) {
@@ -25,5 +37,6 @@ function sell (req, res) {
 module.exports = {
     sell,
     basket,
-    home
+    home,
+    categories
 }

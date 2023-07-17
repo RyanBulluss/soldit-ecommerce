@@ -1,5 +1,30 @@
 <%- include('./partials/header') %>
 
-This is where the basket will go
+
+<div class="container">
+    <% user.basket.forEach(item => { %>
+        <% const ratingsAverage = item.product.reviews.reduce((acc, review) => acc + review.rating, 0) / item.product.reviews.length %>
+        <div class="basket-item">
+            <div class="basket-left">
+                <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
+            </div>
+            <div class="basket-right">
+                <h5><%= item.product.name %></h5>
+                <p>£<%= item.product.price %></p>
+                <p><%= item.product.quality %></p>
+                <p>Quantity: <%= item.quantity %></p>
+                <p>Average Rating: <%= ratingsAverage ? ratingsAverage : 'No ratings' %> </p>
+                <form action="<%= item._id %>?_method=DELETE" method="POST">
+                    <button class="mx-auto btn mt-3 btn-danger">Remove item</button>
+                </form>
+            </div>
+        </div>
+    <% }) %>
+    <% if (user.basket.length) { %>
+        <button class="mx-auto btn mt-3 btn-primary">BUY NOW</button>
+    <% } else { %>
+        <h2 class="text-center">Basket Empty!</h2>
+    <% } %>
+</div>
 
 <%- include('./partials/footer') %>

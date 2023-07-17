@@ -16,7 +16,7 @@ a {
 }
 
 .product-home:hover {
-  background-color: black;
+  background-color: gold;
 }
 
 .product-home img {
@@ -26,21 +26,19 @@ a {
 }
 
 nav img {
-  width: 4vmin;
+  width: 2vmin;
   height: auto;
   border-radius: 10px 10px 0 0;
   color: white;
 }
 
-nav svg {
-  width: 4vmin;
-  height: auto;
-  border-radius: 10px 10px 0 0;
-  color: white;
-  fill: white;
+nav {
+  font-size: 2vmin;
 }
 
-
+nav li {
+  margin: 0 1vmin 0 1vmin;
+}
 
 .login {
   display: flex;
@@ -54,7 +52,25 @@ nav svg {
 }
 
 .show-image {
-  width: 20vmin;
-  height: 20vmin;
+  width: 40vmin;
+  height: auto;
+}
 
+.basket-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 4vmin;
+  border: dotted black 3px;
+  padding: 2vmin;
+}
+
+.basket-item img {
+  width: 100%;
+}
+.basket-left {
+  width: 40%
+}
+.basket-right {
+  width: 40%
 }

@@ -2,27 +2,31 @@
 
 <image class="show-image" src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image><br>
 <%= product.name %> <br>
-<% const sumOfRatings = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length %>
+<% const ratingsAverage = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length %>
 
-Rating: <%= sumOfRatings %> <br>
+Rating: <%= ratingsAverage ? ratingsAverage : 'No ratings' %> <br>
 £<%= product.price %> <br>
 Quality: <%= product.quality %> <br>
 Category: <%= product.category %> <br>
-Stock: <%= product.quantity %> <br> <br>
+Stock: <%= product.quantity %> <br> 
+<form action="<%= product._id %>/add" method="POST">
+    <label>Quantity:</label>
+    <input name="quantity" value="1" min="1" max="<%= product.quantity %>" type="number"> <br>
+    <button class="mx-auto btn mt-1 btn-primary">Add To Basket</button>
+</form><br>
+
 Seller: <%= product.userName %> <br>
-<form action="<%= product._id %>/delete?_method=DELETE" method="POST">
-    <button type="submit">x</button>
-</form>
+
+
+<% if(user?.name == product.userName) { %>
+    <form action="<%= product._id %>/delete?_method=DELETE" method="POST">
+        <button type="submit" class="mx-auto btn mt-3 btn-danger">Delete Product</button>
+    </form>
+<% } %>
+
 <% if(product.reviews.length) { %>
 <h4>Reviews:</h4>
 <table>
-    <!-- <thead>
-        <th>User Image</th>
-        <th>User Name</th>
-        <th>Rating</th>
-        <th>Review</th>
-        <th>Time</th>
-    </thead> -->
     <tbody>
         <% product.reviews.forEach(function(review) { %>
             <tr> 
@@ -34,7 +38,7 @@ Seller: <%= product.userName %> <br>
                 <td>
                     <% if(user?._id.equals(review.user)) { %>
                         <form action="<%= review._id %>?_method=DELETE" method="POST">
-                            <button type="submit">X</button>
+                            <button type="submit" class="btn btn-danger">X</button>
                         </form>
                     <% } %>
                 </td>
