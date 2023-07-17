@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
+}
+
+h1 {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+h2 {
+  font-family: sans-serif;
 }
 
 main {
@@ -102,4 +112,13 @@ nav img {
 }
 .basket-right {
   width: 40%
+}
+
+.shader {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
 }
