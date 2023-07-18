@@ -6,14 +6,15 @@
         <div class="container-sm text-center text-white">
             <h1 class="display-1">SOLDIT</h1>
             <h2 class="">Buying and Selling<br>made easy</h2>
+            <a href="#main-products" class="btn btn-light mt-3 shop-btn px-4 py-2">Shop Now</a>
         </div>
     </div>
 </header>
 
-<br>
-<br>
-<br>
-<div class="container">
+
+<div class="container mt-5" id="main-products">
+    <br>
+    <%- include('./partials/title') %>
     <div class="row">
         <%- products.map(function(product) {
             return `
@@ -21,7 +22,7 @@
                 <a href="/products/${product.id}">
                     <div class="product-home card-body">
                         <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
-                        <h5 class="card-title">${product.name}</h5>
+                        <p class="card-title mt-2">${product.name}</p>
                         <p class="card-text">£${product.price}</p>
                     </div>
                 </a>
@@ -31,6 +32,5 @@
     </div>
 </div>
 
-
-
+<script src='/public/javascripts/client.js'></script>
 <%- include('./partials/footer') %>

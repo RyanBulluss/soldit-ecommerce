@@ -44,6 +44,8 @@ router.get('/logout', function(req, res) {
     });
 });
 
+// Go to stipe for checkout
+router.post('/create-checkout-session', ensureLoggedIn, navCtrl.checkout);
 
 
 module.exports = router;

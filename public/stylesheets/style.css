@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
 
+html{
+  scroll-behavior: smooth;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
@@ -13,7 +17,7 @@ h1 {
 }
 
 h2 {
-  font-family: sans-serif;
+  font-family: serif;
 }
 
 main {
@@ -30,7 +34,11 @@ footer {
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
+}
+
+footer a {
+  color: #fff;
 }
 
 .product-home {
@@ -42,7 +50,7 @@ a {
 }
 
 .product-home:hover {
-  background-color: gold;
+  background-color: #ddd;
 }
 
 .product-home img {
@@ -83,7 +91,7 @@ nav img {
 }
 
 .show-image {
-  width: 40vmin;
+  width: 35vmin;
   height: auto;
 }
 
@@ -107,9 +115,11 @@ nav img {
 .basket-item img {
   width: 100%;
 }
+
 .basket-left {
   width: 40%
 }
+
 .basket-right {
   width: 40%
 }
@@ -121,4 +131,8 @@ nav img {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.shop-btn {
+  border-radius: 50px;
 }

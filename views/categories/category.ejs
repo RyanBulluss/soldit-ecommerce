@@ -6,10 +6,10 @@
 
   
 <div class="container">
+    <% if(!products.length) { %>
+        <h2 class="text-center">No Products Listed</h2>
+    <% } else %>
     <div class="row">
-
-
-        <%= console.log(products) %>
         <%- products.map(function(p) {
             return `
             <div class="col-md-6 col-lg-4">

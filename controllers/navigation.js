@@ -1,10 +1,11 @@
 const Product = require('../models/product');
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 
 
 
 async function home (req, res) {
-    title = 'Home';
+    title = 'Popular Items';
     try {
         const products = await Product.find({});
         res.render('index', { products });
@@ -34,9 +35,16 @@ function sell (req, res) {
     res.render('sell', { title: 'New Product' });
 };
 
+async function checkout (req, res) {
+
+    res.json({ url: 'hi'})
+  };
+
+
 module.exports = {
     sell,
     basket,
     home,
-    categories
+    categories,
+    checkout
 }

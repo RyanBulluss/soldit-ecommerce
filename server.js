@@ -5,17 +5,25 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
 
 require('dotenv').config();
 require('./config/database');
 require('./config/passport');
+
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
+
+console.log(stripePublicKey, stripeSecretKey);
 
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
 
 const app = express();
+
+console.log()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +53,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
+
 
 
 // catch 404 and forward to error handler

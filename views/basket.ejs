@@ -5,7 +5,7 @@
     <% user.basket.forEach(item => { %>
         <% const ratingsAverage = item.product.reviews.reduce((acc, review) => acc + review.rating, 0) / item.product.reviews.length %>
         <div class="basket-item">
-            <div class="basket-left">
+            <div class="basket-left d-flex flex-column justify-content-center">
                 <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
             </div>
             <div class="basket-right">
@@ -21,7 +21,9 @@
         </div>
     <% }) %>
     <% if (user.basket.length) { %>
-        <button class="mx-auto btn mt-3 btn-primary">BUY NOW</button>
+        <form action="/create-checkout-session" method="POST">
+            <button type="submit"  id="checkout-button" class="mx-auto btn mt-3 btn-primary">Checkout</button>
+        </form>
     <% } else { %>
         <h2 class="text-center">Basket Empty!</h2>
     <% } %>
