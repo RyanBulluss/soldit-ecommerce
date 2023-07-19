@@ -1,4 +1,6 @@
 const Product = require('../models/product');
+const User = require('../models/user');
+
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 
 
@@ -14,10 +16,6 @@ async function home (req, res) {
     }
 };
 
-async function user (req, res) {
-    title = `${req.user.name}'s Orders`
-    res.render('user');
-}
 
 async function categories (req, res) {
     title = req.params.category;
@@ -49,6 +47,5 @@ module.exports = {
     sell,
     basket,
     home,
-    categories,
-    user
+    categories
 }

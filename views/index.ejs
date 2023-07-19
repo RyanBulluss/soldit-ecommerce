@@ -19,10 +19,10 @@
         <%- products.map(function(product) {
             return `
             <div class="col-sm-8 col-md-6 col-lg-4 index-cards">
-                <a class="justify-content-center d-flex align-items-center" href="/products/${product.id}">
+                <a class="text-decoration-none justify-content-center d-flex align-items-center" href="/products/${product.id}">
                     <div class="product-home">
                         <image src="${product.image}"></image>
-                        <span><p class="my-auto left">${product.name}</p>
+                        <span><p class="my-auto left text-black">${product.name}</p>
                         <p class="my-auto right">£${product.price}</p></span>
                     </div>
                 </a>

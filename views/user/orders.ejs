@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+<%- include('../partials/title') %>
+
+<% if (user.orders.length) { %>
+    <div class="container-sm card-body border-dark">
+        <%- user.orders.map(function(product) {
+            return `
+            <div class="orders-item">
+
+                <div class="basket-left d-flex align-items-center justify-content-center">
+                    <image src="${product.product.image}"></image>
+                </div>
+                <div class="basket-right">
+                    <span><p class="my-auto left text-black">${product.product.name}</p>
+                    <p class="my-auto right">£${product.product.price}</p></span>
+                </div>
+
+            </div>
+            `
+
+
+        }).join('') %>
+    </div>
+<% } else { %>
+    <h2 class="text-center">No Orders Yet</h2>
+<% } %>
+
+
+
+
+
+
+<%- include('../partials/footer') %>

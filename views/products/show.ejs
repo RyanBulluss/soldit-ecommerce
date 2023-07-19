@@ -7,27 +7,29 @@
             <image class="show-image border" src="<%= product.image %>"></image><br>
         </div>
         <div class="col-md-3 d-flex flex-column  justify-content-between">
-                <h4 class="mb-0"><%= product.name %></h3>
+                <h4 class="mb-2"><%= product.name %></h3>
                 <% const ratingsAverage = product.reviews.reduce((acc, review) => acc + review.rating, 0) / product.reviews.length %>
-                Rating: <%= ratingsAverage ? ratingsAverage : 'No ratings' %> <br>
+                <% const stars = []; for (let i = 0; i < ratingsAverage; i++) {stars.push(`<i class="fa text-warning fa-star"></i>`)} %>
+                <span><%- ratingsAverage ? stars.join('') : 'No ratings' %></span> <br>
                 <h5>£<%= product.price %></h5>
-                <br><br>
             <span>Quality: <%= product.quality %></span> <br>
             <span>Category: <%= product.category %></span> <br>
+            <span>Seller: <%= product.userName %></span> <br>
             
         </div>
         <div class="col-md-3  d-flex flex-column justify-content-center align-items-left">
-            <span>Seller: <%= product.userName %></span> <br>
+            <% if (user) { %>
             <span>Stock: <%= product.quantity %></span> <br> 
             <form action="<%= product._id %>/add" method="POST">
               <label>Quantity:</label>
               <input name="quantity" value="1" min="1" max="<%= product.quantity %>" type="number"> <br>
-              <button type="submit" class="btn mt-1 btn-warning">Add <i class="fa fa-shopping-cart"></i></button>
+              <button type="submit" class="btn btn-sm mt-1 btn-warning">Add <i class="fa fa-shopping-cart"></i></button>
             </form>
+            <% } %>
             <br>
             <% if(user?.name == product.userName) { %>
                 <form action="<%= product._id %>/delete?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-danger">Delete <i class="fa fa-trash"></i></button>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete <i class="fa fa-trash"></i></button>
                 </form>
             <% } %>
           </div>
@@ -59,7 +61,7 @@
             <td>
               <% if(user?._id.equals(review.user)) { %>
               <form action="<%= review._id %>?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-danger">X</button>
+                <button type="submit" class="btn btn-sm btn-danger">X</button>
               </form>
               <% } %>
             </td>

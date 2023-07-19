@@ -20,6 +20,7 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
 const categoriesRouter = require('./routes/categories');
+const userRouter = require('./routes/user');
 
 const app = express();
 
@@ -56,7 +57,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/products', productsRouter);
 app.use('/categories', categoriesRouter);
-
+app.use('/user', userRouter);
 
 
 // catch 404 and forward to error handler

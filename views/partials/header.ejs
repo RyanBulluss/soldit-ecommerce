@@ -34,7 +34,8 @@
           <a href="/sell" class="btn position-relative">
             <i class="fa fa-gavel"></i>
           </a>
-          <a href="/user" class="btn position-relative">
+          <a class="btn position-relative" id="categoriesDropdown" type="button" data-bs-toggle = "collapse" data-bs-target="#userMenu"
+            aria-expanded="false">
             <i class="fa fa-user"></i>
           </a>
           <a href="/logout" class="btn position-relative">
@@ -46,6 +47,17 @@
           <i class="fa fa-google"></i>
         </a>
       <% } %>
+
+      <div class="collapse navbar-collapse order-lg-1" id="userMenu">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item py-2">
+                <a class="nav-link text-uppercase text-dark" href="/user/orders">Orders</a>
+            </li>
+            <li class="nav-item py-2">
+                <a class="nav-link text-uppercase text-dark" href="/user/selling">Selling</a>
+            </li>
+        </ul>
+      </div>
 
       <div class="collapse navbar-collapse order-lg-1" id="navMenu">
         <ul class="navbar-nav mx-auto text-center">

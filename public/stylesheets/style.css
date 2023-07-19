@@ -31,11 +31,15 @@ header {
 
 footer {
   width: 100%;
-  margin-top: auto;
 }
 
 a {
   color: #000;
+}
+
+a:hover {
+  color: #000;
+  text-decoration: none;
 }
 
 footer a {
@@ -59,6 +63,7 @@ footer a {
 }
 
 .product-home span {
+  text-decoration: none;
   width: 100%;
   height: 20%;
   display: flex;
@@ -145,12 +150,21 @@ nav img {
 }
 
 .basket-item {
-  min-height: 30vmin;
+  min-height: 25vmin;
   display: flex;
   justify-content: left;
   margin-bottom: 4vmin;
   border: dotted black 3px;
-  padding: 2vmin;
+  padding: 0.5vmin;
+}
+
+.orders-item {
+  min-height: 25vmin;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 4vmin;
+  border-top: solid black 0.3px;
+  padding: 0.5vmin;
 }
 
 .basket-left img {
@@ -170,16 +184,13 @@ nav img {
 
 }
 
-
-
-
 .shader {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .shop-btn {

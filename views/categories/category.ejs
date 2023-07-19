@@ -4,10 +4,12 @@
 
 
 
-  
+
+
 <div class="container mt-5" id="main-products">
     <br>
     <div class="row justify-content-center align-items-center">
+        <% if (products.length) { %> 
         <%- products.map(function(product) {
             return `
             <div class="col-sm-8 col-md-6 col-lg-4 index-cards">
@@ -21,10 +23,12 @@
             </div>
             `
         }).join('') %>
-    </div>
+    <% } else { %>
+        <h4 class="">No Products Available</h4>
+    <% } %>
+    </div>  
 </div>
-  
-  
+
   
   
 

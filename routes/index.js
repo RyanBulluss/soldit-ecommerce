@@ -16,9 +16,6 @@ router.get('/basket', ensureLoggedIn, navCtrl.basket);
 // Open Sell page
 router.get('/sell', ensureLoggedIn, navCtrl.sell);
 
-// Open User page
-router.get('/user', ensureLoggedIn, navCtrl.user);
-
 // Add new product
 router.post('/', ensureLoggedIn, productCtrl.create);
 
@@ -48,9 +45,7 @@ router.get('/logout', function(req, res) {
     });
 });
 
-router.get('/success', (req, res) => {
-    res.send('Payment successful! <br><br> <a href="/basket">Return to basket</a>');
-});
+router.get('/success', basketCtrl.success);
 
 router.get('/cancel', (req, res) => {
     res.send('Payment canceled. <br><br> <a href="/basket">Return to basket</a>');
