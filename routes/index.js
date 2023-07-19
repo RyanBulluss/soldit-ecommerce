@@ -44,8 +44,16 @@ router.get('/logout', function(req, res) {
     });
 });
 
+router.get('/success', (req, res) => {
+    res.send('Payment successful! <br><br> <a href="/basket">Return to basket</a>');
+});
+
+router.get('/cancel', (req, res) => {
+    res.send('Payment canceled. <br><br> <a href="/basket">Return to basket</a>');
+});
+
 // Go to stipe for checkout
-router.post('/create-checkout-session', ensureLoggedIn, navCtrl.checkout);
+router.post('/create-checkout-session', ensureLoggedIn, basketCtrl.checkout);
 
 
 module.exports = router;

@@ -7,6 +7,7 @@ const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 require('dotenv').config();
 require('./config/database');
@@ -15,7 +16,6 @@ require('./config/passport');
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 
-console.log(stripePublicKey, stripeSecretKey);
 
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
@@ -23,7 +23,6 @@ const categoriesRouter = require('./routes/categories');
 
 const app = express();
 
-console.log()
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +34,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.use(session({
   secret: process.env.SECRET,

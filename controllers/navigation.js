@@ -1,6 +1,5 @@
 const Product = require('../models/product');
-const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
-
+const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
 
 
 
@@ -26,25 +25,24 @@ async function categories (req, res) {
     }
 };
 
-function basket (req, res, location) {
+function basket (req, res) {
     title = 'Basket';
-    res.render('basket', { Product });
+    res.render('basket', { 
+        Product,
+        key: stripePublicKey
+     });
 };
 
 function sell (req, res) {
     res.render('sell', { title: 'New Product' });
 };
 
-async function checkout (req, res) {
 
-    res.json({ url: 'hi'})
-  };
 
 
 module.exports = {
     sell,
     basket,
     home,
-    categories,
-    checkout
+    categories
 }

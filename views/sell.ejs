@@ -1,7 +1,7 @@
 <%- include('./partials/header') %>
 <%- include('./partials/title') %>
 
-<div class="mx-auto col-md-8 text-left">
+<div class="mx-auto p-4 col-md-8 text-left">
     <form action="/" method="POST">
       <div class="form-group">
         <label for="name">Name:</label>
@@ -11,16 +11,15 @@
         <label for="price">Price (£):</label>
         <input class="form-control" name="price" type="number" required>
       </div>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="imageUpload">Select an image:</label>
+          <input type="file" class="form-control-file" id="imageUpload" name="imageUpload" accept="image/*">
+        </div>
+      </form>
       <div class="form-group">
-        <label for="quality">Quality</label>
-        <select class="form-control" required name="quality">
-            <option value='Brand New'>Brand New</option>
-            <option value='Excellent'>Excellent</option>
-            <option value='Very Good'>Very Good</option>
-            <option value='Good'>Good</option>
-            <option value='Fair'>Fair</option>
-            <option value='Poor'>Poor</option>
-        </select>
+        <label for="description">Description:</label>
+        <input class="form-control" name="description" type="text-area">
       </div>
       <div class="form-group">
         <label for="category">Category</label>
@@ -34,10 +33,23 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="quality">Quality</label>
+        <select class="form-control" required name="quality">
+            <option value='Brand New'>Brand New</option>
+            <option value='Excellent'>Excellent</option>
+            <option value='Very Good'>Very Good</option>
+            <option value='Good'>Good</option>
+            <option value='Fair'>Fair</option>
+            <option value='Poor'>Poor</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label for="quantity">Quantity:</label>
         <input class="form-control" name="quantity" min="1" type="number" required>
       </div>
-      <button type="submit" class="mx-auto btn mt-3 btn-primary">Add Product</button>
+      <div class="flex-column">
+        <button type="submit" class="btn mt-3 btn-primary">Add Product</button>
+      </div>
     </form>
   </div>
 

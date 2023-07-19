@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const productSchema = require('./product');
 
 
 const basketItemSchema = new Schema({
@@ -16,7 +15,8 @@ const userSchema = new Schema({
     },
     email: String,
     avatar: String,
-    basket: [basketItemSchema]
+    basket: [basketItemSchema],
+    orders: [basketItemSchema],
 }, {
     timestamps: true
 });

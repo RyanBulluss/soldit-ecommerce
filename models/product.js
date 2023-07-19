@@ -13,7 +13,11 @@ const reviewSchema = new Schema({
         ref: 'User'
     },
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 const productSchema = new Schema({
@@ -34,7 +38,9 @@ const productSchema = new Schema({
         ref: 'User'
     },
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    image: String,
+    description: String
 });
 
 

@@ -1,6 +1,7 @@
 const { MongoDriverError } = require('mongodb');
 const Product = require('../models/product');
 const User = require('../models/user');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 
 async function deleteItem(req, res) {
@@ -15,26 +16,38 @@ async function deleteItem(req, res) {
     }
 }
 
-// async function deleteProduct(req, res, next) {
-//     await Product.deleteOne({ _id: req.params.id });
-//     res.redirect('/');
-// }
+async function checkout (req, res) {
+  const basket = req.user.basket;
+
+  // create array of all basket items
+  let arr = []
+  basket.forEach(item => arr.push({ 
+    price_data: { 
+      currency: "gbp", 
+      product_data: { 
+        name: item.product.name, 
+      }, 
+      unit_amount: item.product.price * 100, 
+    }, 
+    quantity: item.quantity, 
+  }))
+
+  // create session with those items
+  const session = await stripe.checkout.sessions.create({ 
+    payment_method_types: ["card"], 
+    line_items: arr,
+    mode: "payment", 
+    success_url: "http://localhost:3000/success", 
+    cancel_url: "http://localhost:3000/cancel" 
+  });
+  
+  res.redirect(session.url);
+};
 
 
-// Product.findOne({
-//     'reviews._id': req.params.id,
-//     'reviews.user': req.user._id
-// }).then(function(product) {
-//     if(!product) return res.redirect('/');
-//     product.reviews.remove(req.params.id);
-//     product.save().then(function() {
-//         res.redirect(`/products/${product.id}`);
-//     }).catch(function(err) {
-//         return next(err);
-//     });
-// });
 
 
 module.exports = {
-    deleteItem
+    deleteItem,
+    checkout
 }

@@ -30,8 +30,8 @@
         
     </div>
     <div class="row">
-        <div class="col-md-8 mx-auto">
-            description
+        <div class="col-md-12 mx-auto mt-3">
+            <p><%= product.description %></p>
         </div>
 
     </div>
@@ -55,7 +55,7 @@
             <td><%= review.userName %></td>
             <td><%= review.rating %></td>
             <td><%= review.review %></td>
-            <td>00/00/00</td>
+            <td><%= review.date.toLocaleDateString() %></td>
             <td>
               <% if(user?._id.equals(review.user)) { %>
               <form action="<%= review._id %>?_method=DELETE" method="POST">
