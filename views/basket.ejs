@@ -1,12 +1,12 @@
 <%- include('./partials/header') %>
 <%- include('./partials/title') %>
 
-<div class="container card-body">
+<div class="container-sm card-body">
     <% user.basket.forEach(item => { %>
         <% const ratingsAverage = item.product.reviews.reduce((acc, review) => acc + review.rating, 0) / item.product.reviews.length %>
         <div class="basket-item">
-            <div class="basket-left d-flex flex-column justify-content-center">
-                <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
+            <div class="basket-left d-flex align-items-center justify-content-center">
+                <image src="<%= item.product.image %>"></image>
             </div>
             <div class="basket-right">
                 <h5><%= item.product.name %></h5>
@@ -15,7 +15,7 @@
                 <p>Quantity: <%= item.quantity %></p>
                 <p>Average Rating: <%= ratingsAverage ? ratingsAverage : 'No ratings' %> </p>
                 <form action="<%= item._id %>?_method=DELETE" method="POST">
-                    <button class="mx-auto btn mt-3 btn-danger">Remove item</button>
+                    <button class="mx-auto btn mt-3 btn-danger"><i class="fa fa-trash"></i></button>
                 </form>
             </div>
         </div>

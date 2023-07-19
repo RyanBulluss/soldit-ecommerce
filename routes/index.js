@@ -16,8 +16,12 @@ router.get('/basket', ensureLoggedIn, navCtrl.basket);
 // Open Sell page
 router.get('/sell', ensureLoggedIn, navCtrl.sell);
 
+// Open User page
+router.get('/user', ensureLoggedIn, navCtrl.user);
+
 // Add new product
 router.post('/', ensureLoggedIn, productCtrl.create);
+
 
 // Delete from basket
 router.delete('/:id', basketCtrl.deleteItem);

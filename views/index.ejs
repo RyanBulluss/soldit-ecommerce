@@ -15,15 +15,15 @@
 <div class="container mt-5" id="main-products">
     <br>
     <%- include('./partials/title') %>
-    <div class="row">
+    <div class="row justify-content-center align-items-center">
         <%- products.map(function(product) {
             return `
-            <div class="col-md-6 col-lg-4">
-                <a href="/products/${product.id}">
-                    <div class="product-home card-body">
+            <div class="col-sm-8 col-md-6 col-lg-4 index-cards">
+                <a class="justify-content-center d-flex align-items-center" href="/products/${product.id}">
+                    <div class="product-home">
                         <image src="${product.image}"></image>
-                        <p class="card-title mt-2">${product.name}</p>
-                        <p class="card-text">£${product.price}</p>
+                        <span><p class="my-auto left">${product.name}</p>
+                        <p class="my-auto right">£${product.price}</p></span>
                     </div>
                 </a>
             </div>

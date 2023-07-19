@@ -14,6 +14,11 @@ async function home (req, res) {
     }
 };
 
+async function user (req, res) {
+    title = `${req.user.name}'s Orders`
+    res.render('user');
+}
+
 async function categories (req, res) {
     title = req.params.category;
     try {
@@ -44,5 +49,6 @@ module.exports = {
     sell,
     basket,
     home,
-    categories
+    categories,
+    user
 }

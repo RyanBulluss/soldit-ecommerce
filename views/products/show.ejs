@@ -4,7 +4,7 @@
 <div class="container card p-5 mx-auto">
     <div class="row">
         <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
-            <image class="show-image border" src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image><br>
+            <image class="show-image border" src="<%= product.image %>"></image><br>
         </div>
         <div class="col-md-3 d-flex flex-column  justify-content-between">
                 <h4 class="mb-0"><%= product.name %></h3>
@@ -16,15 +16,20 @@
             <span>Category: <%= product.category %></span> <br>
             
         </div>
-        <div class="col-md-3  d-flex flex-column justify-content-center align-items-center">
+        <div class="col-md-3  d-flex flex-column justify-content-center align-items-left">
             <span>Seller: <%= product.userName %></span> <br>
             <span>Stock: <%= product.quantity %></span> <br> 
             <form action="<%= product._id %>/add" method="POST">
               <label>Quantity:</label>
               <input name="quantity" value="1" min="1" max="<%= product.quantity %>" type="number"> <br>
-              <button type="submit" class="btn mt-1 btn-warning">Add To Basket</button>
+              <button type="submit" class="btn mt-1 btn-warning">Add <i class="fa fa-shopping-cart"></i></button>
             </form>
             <br>
+            <% if(user?.name == product.userName) { %>
+                <form action="<%= product._id %>/delete?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete <i class="fa fa-trash"></i></button>
+                </form>
+            <% } %>
           </div>
           <div class="col-md-1"></div>
         
@@ -39,11 +44,6 @@
     <div class="row">
         
     </div>
-    <% if(user?.name == product.userName) { %>
-        <form action="<%= product._id %>/delete?_method=DELETE" method="POST">
-            <button type="submit" class="mx-auto btn mt-3 btn-danger">Delete Product</button>
-        </form>
-    <% } %>
 
     <% if(product.reviews.length) { %>
     <h4 class="mt-4 ">Reviews:</h4>

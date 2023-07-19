@@ -5,19 +5,17 @@
 
 
   
-<div class="container">
-    <% if(!products.length) { %>
-        <h2 class="text-center">No Products Listed</h2>
-    <% } else %>
-    <div class="row">
-        <%- products.map(function(p) {
+<div class="container mt-5" id="main-products">
+    <br>
+    <div class="row justify-content-center align-items-center">
+        <%- products.map(function(product) {
             return `
-            <div class="col-md-6 col-lg-4">
-                <a href="/products/${p.id}">
-                    <div class="product-home card-body">
-                        <image src="https://img.freepik.com/premium-photo/white-tshirt-white-background-front-back-view-generative-ai_446633-7047.jpg?w=740"></image>
-                        <h5 class="card-title">${p.name}</h5>
-                        <p class="card-text">£${p.price}</p>
+            <div class="col-sm-8 col-md-6 col-lg-4 index-cards">
+                <a class="justify-content-center d-flex align-items-center" href="/products/${product.id}">
+                    <div class="product-home">
+                        <image src="${product.image}"></image>
+                        <span><p class="my-auto left">${product.name}</p>
+                        <p class="my-auto right">£${product.price}</p></span>
                     </div>
                 </a>
             </div>
