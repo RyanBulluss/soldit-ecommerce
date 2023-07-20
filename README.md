@@ -13,7 +13,7 @@ Soldit aims to be the reddit of Ecommerce. It offers an effortless and user-frie
 - A screen to display all information about a specific product
 
 ## 
-![Alt text](image.png)
+![Alt text](./public/images/image.png)
 
 ## Technologies used
 
