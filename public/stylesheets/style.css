@@ -58,15 +58,17 @@ footer a {
   border: 1px solid #ddd;
   border-radius: 20px;
   margin: 2vmin;
-  height: 10em;
-  width: 100%;
+  height: 30vmin;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   background-color: #eee;
-  padding: 0.5vmin;
+  padding: 1.5vmin;
 }
+
+
 
 .product-home span {
   text-decoration: none;
@@ -157,28 +159,27 @@ nav img {
 
 .basket-item {
   min-height: 25vmin;
+  max-height: 40vmin;
   display: flex;
   justify-content: left;
-  margin-bottom: 4vmin;
+  margin-bottom: 2vmin;
   border-top: 0.3px solid black;
-
   padding: 0.5vmin;
 }
 
 .orders-item {
-  max-height: 25vmin;
-
+  min-height: 25vmin;
+  max-height: 40vmin;
   display: flex;
   justify-content: left;
   border-top: solid black 0.3px;
+  margin-bottom: 2vmin;
   padding: 0.5vmin;
 }
 
 .basket-left img {
   max-height: 90%;
   max-width: 90%;
-
-  
 }
 
 .basket-left {
@@ -204,3 +205,17 @@ nav img {
 .shop-btn {
   border-radius: 50px;
 }
+
+@media (max-width: 768px) {
+  .product-home {
+    height: 50vmin;
+  }
+
+  .orders-item {
+    max-height: 70vmin;
+  }
+
+  .basket-item {
+    max-height: 70vmin;
+  }
+  }

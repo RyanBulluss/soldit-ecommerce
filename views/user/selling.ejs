@@ -14,15 +14,18 @@
             <div class="basket-right">
                 <h4>${product.name}</h4>
                 <h6>Price: £${product.price.toLocaleString()}</h6>
-                <p>Items left: ${product.quantity}</p>
+                <p>Stock: ${product.quantity}</p>
                 <p>Quality: ${product.quality}</p>
             </div>
-            <form action="edit/${product._id}">
-                <button class="btn btn-icon"><i class="fa fa-edit m-2"></i></button>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+                <form action="edit/${product._id}">
+                <button class="btn btn-icon"><i class="fa fa-edit mt-3 mr-2"></i></button>
             </form> <br><br><br>
             <form action="/products/${product._id}/delete?_method=DELETE" method="POST">
-                <button class="btn btn-icon" type="submit"><i class="fa fa-trash m-2"></i></button>
+                <button class="btn btn-icon" type="submit"><i class="fa fa-trash mr-2"></i></button>
             </form>
+            </div> 
+            
         </div>
         `
 
