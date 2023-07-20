@@ -6,7 +6,6 @@ const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 
 require('dotenv').config();
@@ -36,9 +35,6 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
 
 app.use(session({
   secret: process.env.SECRET,
