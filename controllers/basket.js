@@ -80,7 +80,7 @@ async function success(req, res) {
           await Product.deleteOne({ _id: item.product._id });
         }
     }
-      res.send('Payment successful! <br><br> <a href="/user/orders">Return to Soldit</a>');
+      res.send('<h1 class="display-1">Payment successful!<h1> <br><br> <a href="/user/orders" class="btn btn-primary px-4 py-2 rounded-lg">Return to Soldit</a>');
     } else {
       throw new Error('Invalid or missing metadata in the Stripe session.');
     }
