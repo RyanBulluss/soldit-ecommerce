@@ -12,7 +12,7 @@
                 <h5><%= item.product.name %></h5>
                 <% const stars = []; for (let i = 0; i < ratingsAverage; i++) {stars.push(`<i class="fa text-warning fa-star"></i>`)} %>
                 <span><%- ratingsAverage ? stars.join('') : 'No ratings' %></span> <br>
-                <h6 class="mt-2">£<%= item.product.price %></h6>
+                <h6 class="mt-2">£<%= item.product.price.toLocaleString() %></h6>
                 <p><%= item.product.quality %></p>
                 <p>Quantity: <%= item.quantity %></p>
                 <form action="<%= item._id %>?_method=DELETE" method="POST">
