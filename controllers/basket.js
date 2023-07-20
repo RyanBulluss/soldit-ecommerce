@@ -53,9 +53,9 @@ async function success(req, res) {
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionID);
     const user = await User.findById(req.user.id);
+    basket = user.basket
     if (session && session.metadata && session.metadata.basketId) {
-      const basketId = session.metadata.basketId;
-      const purchasedItems = session.display_items || [];
+
 
       // Move items from basket to purchased orders
       await User.updateOne(
@@ -67,13 +67,19 @@ async function success(req, res) {
         { basket: [] }
       );
       
-
-      // Update stock or other database logic as needed
-      for (const item of purchasedItems) {
-        const { custom: { productId, quantity } } = item;
-        // Implement your logic to update stock and other actions based on the purchased items
-      }
-
+      for (const item of basket) {
+        await Product.updateOne(
+          { _id: item.product._id }, 
+          { $inc: { quantity: -item.quantity } }
+          )
+          
+        const updatedProduct = await Product.findOne({ _id: item.product._id });
+        console.log(updatedProduct);
+        
+        if (updatedProduct.quantity < 1) {
+          await Product.deleteOne({ _id: item.product._id });
+        }
+    }
       res.send('Payment successful! <br><br> <a href="/user/orders">Return to Soldit</a>');
     } else {
       throw new Error('Invalid or missing metadata in the Stripe session.');

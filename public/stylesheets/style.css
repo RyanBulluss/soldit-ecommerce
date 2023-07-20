@@ -160,7 +160,8 @@ nav img {
   display: flex;
   justify-content: left;
   margin-bottom: 4vmin;
-  border: dotted black 3px;
+  border-top: 0.3px solid black;
+
   padding: 0.5vmin;
 }
 
