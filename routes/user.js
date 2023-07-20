@@ -9,7 +9,9 @@ router.get('/orders', ensureLoggedIn, userCtrl.orders);
 
 router.get('/selling', ensureLoggedIn, userCtrl.selling);
 
+router.get('/edit/:id', ensureLoggedIn, userCtrl.edit);
 
+router.post('/update/:id', ensureLoggedIn, userCtrl.updateItem);
 
 
 module.exports = router;

@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+<%- include('../partials/title') %>
+
+
+<div class="mx-auto p-4 col-md-8 text-left">
+    <form action="/user/update/<%= product._id %>" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input class="form-control" name="name" value="<%= product.name %>" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="price">Price (£):</label>
+        <input class="form-control" min="0" name="price" value="<%= product.price %>" type="number" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" class="form-control" value="<%= product.image %>" name="image" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input class="form-control" name="description" value="<%= product.description %>" type="text-area">
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" required name="category">
+            <% let options = ['Electronics', 'Fashion', 'Sports', 'Books', 'Home', 'Garden'] %>
+            <%- options.map(function(o) {
+                return `<option value="${o}" ${o == product.category ? 'selected' : ''}>${o}</option>`
+                }).join('') %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quality">Quality</label>
+        <select class="form-control" required name="quality">
+            <% let newOptions = ['Brand New', 'Excellent', 'Very Good', 'Good', 'Fair', 'Poor'] %>
+            <%- newOptions.map(function(o) {
+                return `<option value="${o}" ${o == product.quality ? 'selected' : ''}>${o}</option>`
+                }).join('') %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input class="form-control" name="quantity" value="<%= product.quantity %>" min="1" type="number" required>
+      </div>
+      <div class="flex-column">
+        <button type="submit" class="btn mt-3 btn-warning">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  
+<%- include('../partials/footer') %>

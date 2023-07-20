@@ -31,9 +31,6 @@
               <i class="fa fa-shopping-cart"></i>
               <span class = "position-absolute top-0 start-100 translate-middle badge bg-warning"><%= user.basket.length %></span>
           </a>
-          <a href="/sell" class="btn position-relative">
-            <i class="fa fa-gavel"></i>
-          </a>
           <a class="btn position-relative" id="categoriesDropdown" type="button" data-bs-toggle = "collapse" data-bs-target="#userMenu"
             aria-expanded="false">
             <i class="fa fa-user"></i>
@@ -51,10 +48,19 @@
       <div class="collapse navbar-collapse order-lg-1" id="userMenu">
         <ul class="navbar-nav mx-auto text-center">
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/user/orders">Orders</a>
+                <a class="nav-link text-uppercase text-dark" href="/user/orders">
+                  Orders &nbsp;&nbsp;<i class="fa fa-truck"></i>
+                </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/user/selling">Selling</a>
+                <a class="nav-link text-uppercase text-dark" href="/user/selling">
+                  Selling &nbsp;&nbsp;<i class="fa fa-gavel"></i>
+                </a>
+            </li>
+            <li>
+              <a href="/sell" class="btn position-relative">
+                New Product &nbsp;&nbsp;<i class="fa fa-tag"></i>
+              </a>
             </li>
         </ul>
       </div>
@@ -62,22 +68,34 @@
       <div class="collapse navbar-collapse order-lg-1" id="navMenu">
         <ul class="navbar-nav mx-auto text-center">
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Electronics">Electronics</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Electronics">
+                  Electronics &nbsp;&nbsp;<i class="fa fa-tablet"></i>
+                </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Fashion">Fashion</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Fashion">
+                  Fashion &nbsp;&nbsp;<i class="fa fa-tshirt"></i>
+                </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Sports">Sports</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Sports">
+                  Sports &nbsp;&nbsp;<i class="fa fa-soccer-ball"></i>
+                </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Books">Books</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Books">
+                  Books &nbsp;&nbsp;<i class="fa fa-book"></i>
+                </a>
             </li>
             <li class="nav-item py-2">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Home">Home</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Home">
+                  Home &nbsp;&nbsp;<i class="fa fa-home"></i>
+                </a>
             </li>
             <li class="nav-item py-2 border-0">
-                <a class="nav-link text-uppercase text-dark" href="/categories/Garden">Garden</a>
+                <a class="nav-link text-uppercase text-dark" href="/categories/Garden">
+                  Garden &nbsp;&nbsp;<i class="fa fa-tree"></i>
+                </a>
             </li>
         </ul>
       </div>

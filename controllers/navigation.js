@@ -43,9 +43,10 @@ function sell (req, res) {
 
 
 
+
 module.exports = {
     sell,
     basket,
     home,
-    categories
+    categories,
 }

@@ -58,8 +58,9 @@ async function success(req, res) {
       const purchasedItems = session.display_items || [];
 
       // Move items from basket to purchased orders
-      await User.updateOne({ _id: req.user._id },
-        { orders: [...req.user.basket] }
+      await User.updateOne(
+        { _id: req.user._id },
+        { $push: { orders: { $each: [...req.user.basket] } } }
       );
 
       await User.updateOne({ _id: req.user._id },
@@ -73,7 +74,7 @@ async function success(req, res) {
         // Implement your logic to update stock and other actions based on the purchased items
       }
 
-      res.send('Payment successful! <br><br> <a href="/basket">Return to basket</a>');
+      res.send('Payment successful! <br><br> <a href="/user/orders">Return to Soldit</a>');
     } else {
       throw new Error('Invalid or missing metadata in the Stripe session.');
     }

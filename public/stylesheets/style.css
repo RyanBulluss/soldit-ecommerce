@@ -2,10 +2,12 @@
 
 html{
   scroll-behavior: smooth;
+  width: 100%;
 }
 
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,6 +46,10 @@ a:hover {
 
 footer a {
   color: #fff;
+}
+
+.reviews {
+  width: 90%
 }
 
 .product-home {
@@ -159,10 +165,10 @@ nav img {
 }
 
 .orders-item {
-  min-height: 25vmin;
+  max-height: 25vmin;
+
   display: flex;
   justify-content: left;
-  margin-bottom: 4vmin;
   border-top: solid black 0.3px;
   padding: 0.5vmin;
 }
@@ -179,6 +185,7 @@ nav img {
 }
 
 .basket-right {
+  width: 50%;
   align-self: center;
   justify-self: right;
 

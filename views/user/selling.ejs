@@ -2,8 +2,33 @@
 <%- include('../partials/title') %>
 
 
-<% if (user.prod.length) { %>
+<% if (products.length) { %>
+    <div class="container card-body border-dark">
+    <%- products.reverse().map(function(product) {
+        return `
+        <div class="orders-item">
 
+            <div class="basket-left d-flex align-items-center justify-content-center">
+                <image src="${product.image}"></image>
+            </div>
+            <div class="basket-right">
+                <h4>${product.name}</h4>
+                <h6>Price: £${product.price}</h6>
+                <p>Items left: ${product.quantity}</p>
+                <p>Quality: ${product.quality}</p>
+            </div>
+            <form action="edit/${product._id}">
+                <button class="btn btn-icon"><i class="fa fa-edit m-2"></i></button>
+            </form> <br><br><br>
+            <form action="/products/${product._id}/delete?_method=DELETE" method="POST">
+                <button class="btn btn-icon" type="submit"><i class="fa fa-trash m-2"></i></button>
+            </form>
+        </div>
+        `
+
+
+    }).join('') %>
+    </div>
 <% } else { %>
     <h2 class="text-center">No Products Yet</h2>
 <% } %>

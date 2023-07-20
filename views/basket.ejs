@@ -2,7 +2,7 @@
 <%- include('./partials/title') %>
 
 <div class="container-sm card-body">
-    <% user.basket.forEach(item => { %>
+    <% user.basket.reverse().forEach(item => { %>
         <% const ratingsAverage = item.product.reviews.reduce((acc, review) => acc + review.rating, 0) / item.product.reviews.length %>
         <div class="basket-item">
             <div class="basket-left d-flex align-items-center justify-content-center">

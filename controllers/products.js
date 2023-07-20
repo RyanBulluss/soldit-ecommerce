@@ -72,7 +72,7 @@ function deleteReview(req, res, next) {
 
 async function deleteProduct(req, res, next) {
     await Product.deleteOne({ _id: req.params.id });
-    res.redirect('/');
+    res.redirect('/user/selling');
 }
 
 async function addToBasket(req, res) {
