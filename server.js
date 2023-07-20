@@ -12,9 +12,6 @@ require('dotenv').config();
 require('./config/database');
 require('./config/passport');
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-const stripePublicKey = process.env.STRIPE_PUBLIC_KEY;
-
 
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');

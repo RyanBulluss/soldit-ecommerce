@@ -37,8 +37,8 @@ async function checkout (req, res) {
     payment_method_types: ["card"], 
     line_items: arr,
     mode: "payment", 
-    success_url: "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}", 
-    cancel_url: "http://localhost:3000/cancel" ,
+    success_url: "https://soldit-shop-ffbb257f110b.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}", 
+    cancel_url: "https://soldit-shop-ffbb257f110b.herokuapp.com/cancel" ,
     metadata: {
       basketId: `${basket._id}`
     },
