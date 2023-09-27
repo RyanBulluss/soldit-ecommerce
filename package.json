@@ -21,6 +21,7 @@
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
     "passport-google-oauth": "^2.0.0",
+    "serve-favicon": "^2.5.0",
     "stripe": "^12.13.0"
   }
 }
